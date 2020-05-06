@@ -9,8 +9,8 @@
 ;===========================================
 */
 const header = require('../brumfield-header.js');
-//define person object literal with age function that can be 
-//reused to get data from other objects
+//define person object literal prototype with age function that can be 
+//reused on other objects
 const person = {
   getAge: function() {
     return this.age;
