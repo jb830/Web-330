@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="../knockout-3.5.1.js"></script>
+  <title>Brumfield-6.3</title>
+</head>
+<body>
+  
+  <header class="header bg-dark mb-5">
+    <div class="navbar navbar-dark bg-dark">
+      <h3 class="text-light font-weight-lighter pl-4">Brumfield Exercise 6.3</h3>
+    </div>
+  </header>
+
+  <form class="container">
+    <div class="form-group">
+      <label for="txtFirstName">First Name</label>
+      <input type="text" class="form-control bg-light" id="txtFirstName" data-bind="value: firstName" placeholder="First Name">
+    </div>
+    <div class="form-group">
+      <label for="txtLastName">Last Name</label>
+      <input type="text" class="form-control bg-light" id="txtLastName" data-bind="value: lastName" placeholder="Last Name">
+    </div>
+    <div class="form-group">
+      <label for="emailAdd">Email address</label>
+      <input type="email" class="form-control bg-light" id="emailAdd" data-bind="value: email" aria-describedby="emailHelp" placeholder="Enter email">
+    </div>
+    <button type="submit" class="btn btn-info">Submit</button>
+  </form>
+
+<script>
+  const personViewModel = {
+    firstName: 'Jo',
+    lastName: 'Brumfield',
+    email: 'exampleemail@example.com'
+  }
+  ko.applyBindings(personViewModel);
+</script>  
+
+</body>
+</html>
