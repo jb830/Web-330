@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="../knockout-3.5.1.js"></script>
+  <title>Brumfield 7.2</title>
+
+</head>
+
+<body>
+  <header class="header bg-dark mb-5">
+    <div class="navbar navbar-dark bg-dark">
+      <h3 class="text-light font-weight-lighter pl-4">Brumfield Exercise 7.2</h3>
+    </div>
+  </header>
+
+  <div role="main" class="container">
+    <h2>Please enter your first and last name</h2>
+    <form class="mb-5">
+      <div class="form-group">
+        <label for="txtFirstName">First Name: </label>
+        <input type="text" data-bind="value: firstName" class="form-control" id="txtFirstName" />
+      </div>
+      <div data-bind="if: displayName">
+        <div class="form-group">
+          <label for="txtLastName">Last Name: </label>
+          <input type="text" data-bind="value: lastName" class="form-control" id="txtLastName" />
+        </div>
+      </div>
+    </form>
+
+    <div data-bind="if: firstName">
+      <h2>
+        <span id="displayName" class="alert alert-success" data-bind="text: displayName"></span>
+      </h2>
+    </div>
+
+  </div>
+
+  <script>
+    function PersonViewModel() {
+      this.firstName = ko.observable("");
+      this.lastName = ko.observable("");
+
+      this.displayName = ko.pureComputed(function () {
+        return this.firstName() + " " + this.lastName();
+      }, this);
+    }
+    ko.applyBindings(new PersonViewModel());
+  </script>
+</body>
+
+</html>
