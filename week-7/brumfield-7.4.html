@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="../knockout-3.5.1.js"></script>
+  <title>Brumfield 7.4</title>
+
+</head>
+
+<body>
+  <header class="header bg-dark mb-5">
+    <div class="navbar navbar-dark bg-dark">
+      <h3 class="text-light font-weight-lighter pl-4">Brumfield Assignment 7.4</h3>
+    </div>
+  </header>
+
+  <main role="main" class="container">
+    <table class="table table-bordered">
+      <thead class="bg-info text-light">
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>URL</th>
+        </tr>
+      </thead>
+      <tbody data-bind="foreach: tutorials">
+        <tr>
+          <td data-bind="text: title"></td>
+          <td data-bind="text: description"></td>
+          <td>
+            <a data-bind="attr: {href: url}" target="_blank">Link to YouTube Tutorial</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <script>
+    function TutorialsViewModel() {
+      this.tutorials = ko.observableArray([
+        {
+            title: 'Node.js Tutorial for Beginners',
+            description: "Node.js Tutorial for Beginners: Learn Node in 1 Hour",
+            url: 'https://www.youtube.com/watch?v=TlB_eWDSMt4'
+          },
+          {
+            title: 'Basics of CSS Grid: The Big Picture',
+            description: "Jen describes the overall big picture of CSS Grid and what all these terms mean. How it's different than float-based frameworks and how we are going to apply Grid to specific containers on the page — while still using other layout methods on other containers of content. ",
+            url: 'https://www.youtube.com/watch?v=FEnRpy9Xfes'
+          },
+          {
+            title: 'CSS Tutorials #1 - Introduction to CSS and Adding a CSS File to Your HTML',
+            description: "The 1st tutorial in the CSS tutorial series. In this lesson, I'll be introducing you to CSS and show you how to add a css document to your site.",
+            url: 'https://www.youtube.com/watch?v=x9HmYfSN4Gk&list=PLLnpHn493BHH6DkHPhduhco5XavNA9JaD'
+          },
+          {
+            title: 'Express JS Crash Course',
+            description: "In this crash course we will dive into the Express JS framework for Node.js. I recommend first watching my Node.js crash course.",
+            url: 'https://www.youtube.com/watch?v=L72fhGm1tfE'
+          },
+          {
+            title: '#2 JavaScript Tutorial | What is Dom? | Document Object Model',
+            description: "In this video tutorial of JavaScript fundamentals, we will study and understand the concept of Document Object Model also known as DOM.",
+            url: 'https://www.youtube.com/watch?v=_GxpmQ54aqg&list=PLsyeobzWxl7qtP8Lo9TReqUMkiOp446cV&index=3'
+          }
+        ])};
+    ko.applyBindings(new TutorialsViewModel());
+  </script>
+</body>
+
+</html>
