@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../knockout-3.5.1.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <title>Brumfield 7.3</title>
+
+</head>
+
+<body class="bg-light">
+  
+  <header class="header bg-dark mb-5">
+    <div class="navbar navbar-dark bg-dark">
+      <h3 class="text-light font-weight-lighter pl-4">Brumfield Exercise 7.3</h3>
+    </div>
+  </header>
+
+  <div role="main" class="container">
+    <table class="table table-bordered">
+      <thead class="bg-info text-light">
+        <tr>
+          <th>Name</th>
+          <th>Author</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody data-bind="foreach: textBooks">
+        <tr>
+          <td data-bind="text: name"></td>
+          <td data-bind="text: author"></td>
+          <td data-bind="text: price"></td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+  </div>
+  
+  <script>
+    function TextbookViewModel() {
+      this.textBooks = ko.observableArray([{
+          name: 'JavaScript: The Definitive Guide: Master the Worlds Most-Used Programming Language',
+          author: 'David Flanagan',
+          price: '$' + 52.99
+
+        },
+        {
+          name: 'Eloquent JavaScript, 3rd Edition: A Modern Introduction to Programming',
+          author: 'Marijn Haverbeke',
+          price: '$' + 25.49
+        },
+        {
+          name: 'CSS3: The Missing Manual',
+          author: 'David Sawyer McFarland',
+          price: '$' + 30.00
+        },
+        {
+          name: 'Web Design with HTML, CSS, JavaScript and jQuery Set',
+          author: 'Jon Duckett',
+          price: '$' + 26.99
+        }
+      ]);
+    }
+    ko.applyBindings(new TextbookViewModel());
+  </script>
+</body>
+
+</html>
