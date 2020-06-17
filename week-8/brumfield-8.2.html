@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles/style.css">
+  <script type='text/javascript' src='../knockout-3.5.1.js'></script>
+  <title>Brumfield-8.2</title>
+</head>
+<body>
+  <header class="header bg-dark mb-5">
+    <div class="navbar navbar-dark bg-dark">
+      <h3 class="text-light font-weight-lighter pl-4">Brumfield Exercise 8.2</h3>
+    </div>
+  </header>
+
+  <div role="main" class="container">
+    <div class="row" data-bind="if: error">
+      <div class="col-sm-12">
+        <div class="alert alert-danger" role="alert">
+          <strong>Warning!</strong> <span data-bind="text: error()"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card card-inverse" style="border-color:
+        #333;">
+          <div class="card-block p-3">
+            <h3 class="card-title">Employee List</h3>
+            <div class="card-text">
+              <div class="form-group row">
+                <label for="txtEmployee" class="col-2 col-form-label">Name: </label>
+                <div class="col-6">
+                  <input type="text" data-bind="value: nameToAdd, valueUpdate:
+                  'afterkeydown'" class="form-control" id="txtEmployee" />
+                </div>
+                <div class="col-4">
+                  <a href="#" data-bind="click: add" class="btn btn-info">Add</a>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="txtEmployeeList">Employee List: </label>
+                <select size="10" class="form-control" data-bind="options: employeeList" id="txtEmployeeList"></select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function EmployeeViewModel() {
+      this.nameToAdd = ko.observable("");
+      this.employeeList = ko.observableArray(["Jon Doe", "Jane Doe"]);
+      this.error = ko.observable("");
+      this.add = function () {
+        if ((this.nameToAdd() !== "") && (this.employeeList.indexOf(this.nameToAdd()) < 0)) {
+          this.error("");
+          this.employeeList.push(this.nameToAdd());
+        } else {
+          this.error("Duplicate or Invalid Entry.");
+        }
+        this.nameToAdd("");
+      }
+    }
+    ko.applyBindings(new EmployeeViewModel());
+  </script>
+</body>
+</html>
